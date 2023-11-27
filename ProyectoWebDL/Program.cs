@@ -19,7 +19,11 @@ builder.Services.AddTransient<IArticuloServices, ArticuloServices>();
 builder.Services.AddTransient<ILibroServices, LibroServices>();
 builder.Services.AddTransient<IUsuarioServices, UsuarioServices>();
 builder.Services.AddTransient<IRolServices, RolServices>();
+
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -38,7 +42,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Articulo}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

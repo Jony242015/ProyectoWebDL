@@ -32,6 +32,24 @@ namespace ProyectoWebDL.Controllers
                 throw new Exception("Succedio un error" + ex.Message);
             }
         }
+        [HttpGet]
+        //Se retorna la vista "index" de la respectiva carpeta
+        public async Task<IActionResult> IndexCopia()
+        {
+            try
+            {
+                //Uso de la lista de los articulos para que se muestre al abrir la vista
+
+                return View(await _articuloServices.GetArticulos());
+
+                /*var response = await _articuloServices.GetArticulos();
+                return View(response);*/
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Succedio un error" + ex.Message);
+            }
+        }
 
         [HttpGet]
         public IActionResult Crear()
@@ -40,7 +58,7 @@ namespace ProyectoWebDL.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(Articulo request)
+        public IActionResult Crear([FromForm] Articulo request)
         {
             try
             {

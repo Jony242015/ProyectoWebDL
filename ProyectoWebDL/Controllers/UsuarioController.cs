@@ -87,6 +87,7 @@ namespace ProyectoWebDL.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         [HttpDelete]
         public IActionResult Eliminar(int id)
         {
